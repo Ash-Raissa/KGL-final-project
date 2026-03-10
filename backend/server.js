@@ -14,7 +14,12 @@ const director = require('./routes/director');
 const app = express();
 
 // Allow frontend apps from other origins to call this API.
-app.use(cors());
+//app.use(cors());
+app.use(cors({
+  origin: "https://karibugltd.netlify.app",
+  credentials: true
+}));
+
 // Parse incoming JSON and form data.
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
