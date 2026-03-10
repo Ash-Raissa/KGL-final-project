@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./config/swagger');
+const path = require('path');
 
 const userRoutes = require('./routes/auth');
 const managerRoutes = require('./routes/manager');
@@ -20,8 +21,8 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // Serve static files for frontend pages and assets.
-app.use(express.static('public'));
-app.use(express.static('views'));
+app.use(express.static(path.join(__dirname, '..', 'frontend', 'public')));
+app.use(express.static(path.join(__dirname, '..', 'frontend', 'views')));
 
 
 // Register route groups.
